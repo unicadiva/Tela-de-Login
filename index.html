@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
-rel='stylesheet'> 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
     <link rel="stylesheet" href="styles.css">
     <title>Tela de Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,19 +14,21 @@ rel='stylesheet'>
     <main class="container">
         <form>
             <h1>Projeto Login</h1>
+            
             <div class="input-box">
-                <input placeholder="Usuário" type="email">
+                <input placeholder="Seu Email" type="email">
                 <i class="bx bxs-user"></i>
             </div>
+            
             <div class="input-box">
-                <input placeholder="Senha" type="password">
-                <i class="bx bxs-lock-alt"></i>
-
+                <input type="password" id="senhaInput" placeholder="Senha">
+                <i class="bx bxs-lock-alt" id="iconeSenha" onclick="toggleSenha()" data-tooltip="Mostrar senha" style="cursor: pointer;"></i>
             </div>
+
             <div class="remember-forgot">
                 <label>
-                <input type="checkbox" id="remember">
-                Lembrar a senha
+                    <input type="checkbox" id="remember">
+                    Lembrar a senha
                 </label>
                 <a href="#">Esqueci a senha </a>
             </div>
@@ -38,9 +38,26 @@ rel='stylesheet'>
             <div class="register-link">
                 <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
             </div>
-
         </form>
-    
     </main>
+
+    <script>
+      function toggleSenha() {
+        const inputSenha = document.getElementById('senhaInput');
+        const iconeCadeado = document.getElementById('iconeSenha');
+
+        if (inputSenha.type === 'password') {
+          inputSenha.type = 'text';
+          iconeCadeado.classList.remove('bxs-lock-alt');
+          iconeCadeado.classList.add('bxs-lock-open-alt');
+          iconeCadeado.setAttribute('data-tooltip', 'Ocultar senha');
+        } else {
+          inputSenha.type = 'password';
+          iconeCadeado.classList.remove('bxs-lock-open-alt');
+          iconeCadeado.classList.add('bxs-lock-alt');
+          iconeCadeado.setAttribute('data-tooltip', 'Mostrar senha');
+        }
+      }
+    </script>
 </body>
 </html>
